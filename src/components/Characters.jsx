@@ -41,7 +41,7 @@ const Characters = () => {
 
     const handleSearch = useCallback(() => {
             setSearch(searchInput.current.value);
-        },[])
+        }, [])
     /*
     const filteredUsers = characters.filter((user) => {
         return user.name.toLowerCase().includes(search.toLowerCase());
@@ -55,7 +55,12 @@ const Characters = () => {
         [characters, search]
     )
 
-    
+    const listCharters = () => filteredUsers.map(character => (
+        <div className="item" key={character.id}>
+            <h2>{character.name}</h2>
+            <button type="button" onClick={() => handleClick(character)}>Agregar a favoritos</button>
+        </div>
+    ))
 
     return (
         <div className="Characters">
@@ -68,13 +73,9 @@ const Characters = () => {
             ))}
             </div>
             <p>----------</p>
+            { /* Search Component */ }
             <Search searchInput={searchInput} search={search} handleSearch={handleSearch} />
-            {filteredUsers.map(character => (
-                <div className="item" key={character.id}>
-                    <h2>{character.name}</h2>
-                    <button type="button" onClick={() => handleClick(character)}>Agregar a favoritos</button>
-                </div>
-            ))}
+            { listCharters() }
         </div>
     );
 }

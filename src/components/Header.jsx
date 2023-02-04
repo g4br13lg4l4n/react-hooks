@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
+import AppContext from '../context/AppContext';
 
 const Header = () => {
-    const [darkMode, setDarkMode] = useState(false);
+    const {state, setDarkMode} = useContext(AppContext);
+    const { darkMode } = state;
 
     const handleClick = () => {
         setDarkMode(!darkMode);
